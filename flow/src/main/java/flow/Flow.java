@@ -212,6 +212,22 @@ public final class Flow {
   }
 
   /**
+   * Replaces the history with a cleared history consisting only of the given screen and
+   * dispatches in the given direction.
+   */
+  public void replaceHistory(final Object key, final Direction direction) {
+    setHistory(getHistory().buildUpon().clear().push(key).build(), direction);
+  }
+
+  /**
+   * Replaces the top key of the history with the given screen and dispatches in the
+   * given direction.
+   */
+  public void replaceTop(final Object key, final Direction direction) {
+    setHistory(getHistory().buildUpon().pop(1).push(key).build(), direction);
+  }
+
+  /**
    * Updates the history such that the given key is at the top and dispatches the updated
    * history.
    *
